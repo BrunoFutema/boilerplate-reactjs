@@ -4,6 +4,7 @@ export const GlobalStyles = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
+
     outline: transparent;
     box-sizing: border-box;
   }
@@ -21,15 +22,15 @@ export const GlobalStyles = createGlobalStyle`
   body {
     background: #1b203c;
 
-    color: #7159c1;
+    color: rgb(130, 87, 230);
     -webkit-font-smoothing: antialiased;
   }
 
   html,
   body,
   #root {
-    width: 100%;
     height: 100%;
+    width: 100%;
 
     font-size: 1.5rem;
 
