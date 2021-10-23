@@ -2,80 +2,95 @@ import { animated } from 'react-spring';
 
 import styled, { css } from 'styled-components';
 
-import { borders } from '@components/bosons/borders';
 import { colors } from '@components/bosons/colors';
-import { typography } from '@components/bosons/typography';
 import { ToastMessage } from '@contexts/ReactToastContext';
 
-type IToastProps = Pick<ToastMessage, 'type'>;
+interface IToastProps extends Pick<ToastMessage, 'type'> {
+  description?: 1 | 0;
+}
 
 const toastVariations = {
   success: css`
-    background: ${colors.notifications.success[500]};
+    background: ${colors.alerts.success[500]};
   `,
   info: css`
-    background: ${colors.notifications.info[500]};
+    background: ${colors.alerts.info[500]};
   `,
   warning: css`
-    background: ${colors.notifications.warning[500]};
+    background: ${colors.alerts.warning[500]};
   `,
   error: css`
-    background: ${colors.notifications.error[500]};
+    background: ${colors.alerts.error[500]};
   `,
 };
 
 export const Container = styled(animated.div)<IToastProps>`
-  width: 300px;
+  ${({ theme, description, type = 'info' }) => css`
+    width: 300px;
 
-  border-radius: ${borders.radii[300]};
+    border-radius: ${theme.borders.radii[300]};
 
-  padding: 16px;
+    padding: 14px 16px 16px 16px;
 
-  position: relative;
-
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-
-  cursor: pointer;
-
-  div {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    justify-content: center;
-
-    strong {
-      color: ${colors.white};
-      font-family: ${typography.fontFamily};
-      font-size: ${typography.fontSize.extraLarge};
-      line-height: ${typography.lineHeight};
-    }
-
-    p {
-      color: ${colors.white};
-      font-family: ${typography.fontFamily};
-      font-size: ${typography.fontSize.small};
-    }
-  }
-
-  button {
-    border: none;
-    background: none;
-
-    transition: filter 400ms;
+    position: relative;
 
     display: flex;
-    align-items: center;
+    gap: 16px;
+    align-items: ${description ? 'flex-start' : 'center'};
 
-    &:hover {
-      filter: brightness(1.8);
+    cursor: pointer;
+
+    ${description &&
+    css`
+      > svg {
+        margin-top: 6px;
+      }
+
+      button svg {
+        margin-top: 4px;
+      }
+    `};
+
+    div {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      justify-content: center;
+
+      strong {
+        color: ${theme.colors.white};
+        font-family: ${theme.typography.fontFamily};
+        font-size: ${theme.typography.fontSize.normal};
+        line-height: ${theme.typography.lineHeight.normal};
+      }
+
+      p {
+        color: ${theme.colors.white};
+        font-family: ${theme.typography.fontFamily};
+        font-size: ${theme.typography.fontSize.small};
+
+        margin-top: 4px;
+      }
     }
-  }
 
-  & + div {
-    margin-top: 16px;
-  }
+    button {
+      border: none;
+      background: none;
 
-  ${({ type = 'info' }) => toastVariations[type]}
+      transition: filter 400ms;
+
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        filter: brightness(1.8);
+      }
+    }
+
+    & + div {
+      margin-top: 16px;
+    }
+
+    ${toastVariations[type]}
+  `}
 `;

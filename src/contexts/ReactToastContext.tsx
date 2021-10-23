@@ -29,11 +29,11 @@ const ToastProvider: React.FC<IToastProviderProps> = ({
   const [messages, setMessages] = useState<ToastMessage[]>([]);
 
   const addToast = useCallback(
-    ({ title, type }: Omit<ToastMessage, 'id'>) => {
+    ({ title, description, type }: Omit<ToastMessage, 'id'>) => {
       setMessages(prevMessages =>
         prevMessages.length === max
           ? prevMessages
-          : [...prevMessages, { id: v4(), title, type }],
+          : [...prevMessages, { id: v4(), title, description, type }],
       );
     },
     [max],

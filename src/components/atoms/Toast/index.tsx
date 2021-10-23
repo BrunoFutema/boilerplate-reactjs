@@ -31,25 +31,30 @@ const Toast: React.FC<IToastProps> = ({ message, style }) => {
 
   const icons = useMemo(() => {
     return {
-      success: <FiCheckCircle color={colors.white} size={24} />,
-      info: <FiInfo color={colors.white} size={24} />,
-      warning: <FiAlertTriangle color={colors.white} size={24} />,
-      error: <FiXCircle color={colors.white} size={24} />,
+      success: <FiCheckCircle color={colors.white} size={18} />,
+      info: <FiInfo color={colors.white} size={18} />,
+      warning: <FiAlertTriangle color={colors.white} size={18} />,
+      error: <FiXCircle color={colors.white} size={18} />,
     };
   }, []);
 
   return (
-    <Container key={message.id} type={message.type} style={style}>
+    <Container
+      key={message.id}
+      type={message.type}
+      description={message.description ? 1 : 0}
+      style={style}
+    >
       {icons[message.type || 'info']}
 
       <div>
         <strong>{message.title}</strong>
 
-        <p>{message.description}</p>
+        {message.description && <p>{message.description}</p>}
       </div>
 
       <button type="button" onClick={() => removeToast(message.id)}>
-        <FiX color={colors.white} size={24} />
+        <FiX color={colors.white} size={18} />
       </button>
     </Container>
   );
