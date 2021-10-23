@@ -7,14 +7,14 @@ import { useToast } from '@hooks/useToast';
 
 import { Container } from './styles';
 
-const SignIn: React.FC = () => {
-  const { signIn } = useAuth();
+const Dashboard: React.FC = () => {
+  const { signOut } = useAuth();
   const { toggleTheme } = useTheme();
   const { addToast } = useToast();
 
   return (
     <Container>
-      <h1>SignIn</h1>
+      <h1>Dashboard</h1>
 
       <Input />
 
@@ -29,11 +29,11 @@ const SignIn: React.FC = () => {
         Chamar Toast
       </button>
 
-      <button type="button" onClick={signIn}>
-        Entrar
+      <button type="button" onClick={signOut}>
+        Sair
       </button>
     </Container>
   );
 };
 
-export { SignIn };
+export { Dashboard };

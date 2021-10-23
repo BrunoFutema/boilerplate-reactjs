@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
   * {
@@ -20,31 +20,37 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background: #1b203c;
+    ${({ theme }) => css`
+      background: ${theme.colors.background};
 
-    color: rgb(130, 87, 230);
-    -webkit-font-smoothing: antialiased;
+      color: ${theme.colors.text};
+      -webkit-font-smoothing: antialiased;
+    `}
   }
 
   html,
   body,
   #root {
-    height: 100%;
     width: 100%;
+    height: 100%;
 
-    font-size: 1.5rem;
+    font-size: 1rem;
 
     display: flex;
     align-items: center;
     justify-content: center;
+
+    transition: background 200ms;
   }
 
   body,
   input,
   textarea,
   button {
-    font-weight: 400;
-    font-family: Roboto, sans-serif;
+    ${({ theme }) => css`
+      font-family: ${theme.typography.fontFamily};
+      font-weight: ${theme.typography.fontWeight.normal};
+    `}
   }
 
   h1,
@@ -54,7 +60,9 @@ export const GlobalStyles = createGlobalStyle`
   h5,
   h6,
   strong {
-    font-weight: 600;
+    ${({ theme }) => css`
+      font-weight: ${theme.typography.fontWeight.bold};
+    `}
   }
 
   button {
