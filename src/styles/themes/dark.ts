@@ -6,7 +6,7 @@ export const dark = {
     text: '#fbfbfb',
     background: '#232323',
     input: {
-      border: '#fbfbfb',
+      border: '#232323',
       background: '#fbfbfb',
       color: '#232323',
     },

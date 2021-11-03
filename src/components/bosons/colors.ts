@@ -2,7 +2,7 @@ export const colors = {
   text: '#fbfbfb',
   background: '#232323',
   input: {
-    border: '#fbfbfb',
+    border: '#c4c4c4',
     background: '#fbfbfb',
     color: '#232323',
   },
@@ -130,6 +130,7 @@ export const colors = {
     },
   },
   white: '#fbfbfb',
+  black: '#232323',
   gray: {
     100: '#f1f1f1',
     200: '#d4d4d4',

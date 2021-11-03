@@ -16,7 +16,7 @@ const Dashboard: React.FC = () => {
     <Container>
       <h1>Dashboard</h1>
 
-      <Input />
+      <Input name="Dashboard" placeholder="Dashboard" />
 
       <button type="button" onClick={toggleTheme}>
         Mudar tema

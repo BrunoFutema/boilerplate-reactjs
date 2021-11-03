@@ -16,7 +16,7 @@ const SignIn: React.FC = () => {
     <Container>
       <h1>SignIn</h1>
 
-      <Input />
+      <Input label="SignIn" name="SignIn" placeholder="SignIn" />
 
       <button type="button" onClick={toggleTheme}>
         Mudar tema
